@@ -1,4 +1,4 @@
-# J KING - ML/AI Data Operator Portfolio Website
+# J KING - ML/AI Data Operations Portfolio Website
 
 A modern, responsive portfolio website showcasing ML/AI expertise and projects, featuring animated backgrounds, smooth interactions, and mobile-first design.
 
@@ -175,4 +175,4 @@ For questions or support, reach out:
 
 ---
 
-Built with ❤️ by J KING - ML/AI Data Operator
+Built with ❤️ by J KING - ML/AI Data Operations

@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(`
     ╔══════════════════════════════════════════════════════════╗
     ║              Justin Michael King Portfolio               ║
-    ║                  ML/AI Data Operator                     ║
+    ║                 ML/AI Data Operations                    ║
     ║                                                          ║
     ║  Thanks for checking out the console!                   ║
     ║  Feel free to reach out if you'd like to collaborate.   ║

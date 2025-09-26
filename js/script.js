@@ -120,31 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(aboutSection);
     }
 
-    // Skill bars animation
-    const skillBars = document.querySelectorAll('.skill-progress');
-    let skillsAnimated = false;
-
-    const skillsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !skillsAnimated) {
-                skillsAnimated = true;
-                skillBars.forEach((bar, index) => {
-                    setTimeout(() => {
-                        const width = bar.getAttribute('data-width');
-                        bar.style.width = width;
-                    }, index * 200);
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-
-    const skillsSection = document.querySelector('.skills');
-    if (skillsSection) {
-        skillsObserver.observe(skillsSection);
-    }
 
     // Intersection Observer for animations
-    const observeElements = document.querySelectorAll('.skill-category, .project-card, .about-stats .stat');
+    const observeElements = document.querySelectorAll('.skill-category, .project-card, .about-stats .stat, .experience-item');
     
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

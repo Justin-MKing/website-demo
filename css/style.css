@@ -914,66 +914,297 @@ section {
 }
 
 .skill-item {
-    margin-bottom: 1.5rem;
-}
-
-.skill-name {
-    display: block;
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    border-radius: 2rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
     color: var(--text-primary);
     text-shadow: 0 0 10px rgba(240, 253, 244, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.skill-bar {
-    width: 100%;
-    height: 10px;
-    background: rgba(16, 185, 129, 0.2);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    overflow: hidden;
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 2rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    border-color: var(--primary-color);
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+}
+
+.skill-item:hover::before {
+    opacity: 0.2;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Professional Work History Section */
+.experience {
+    background: rgba(5, 150, 105, 0.1);
+    backdrop-filter: blur(10px);
     position: relative;
 }
 
-.skill-bar::before {
+.experience::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(52, 211, 153, 0.3) 50%, 
-        transparent 100%);
-    animation: shimmer 2s infinite;
+    background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    z-index: -1;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-.skill-progress {
-    height: 100%;
-    background: var(--gradient-primary);
-    border-radius: 5px;
-    width: 0;
-    transition: width 1.5s ease-in-out;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+.experience-timeline {
     position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.skill-progress::after {
+.experience-timeline::before {
     content: '';
     position: absolute;
+    left: 50%;
     top: 0;
-    right: 0;
+    bottom: 0;
     width: 4px;
-    height: 100%;
-    background: var(--accent-color);
-    box-shadow: 0 0 8px var(--accent-color);
-    border-radius: 0 5px 5px 0;
+    background: var(--gradient-primary);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.experience-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+    align-items: flex-start;
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border: 4px solid var(--bg-primary);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.8), 0 0 40px rgba(52, 211, 153, 0.4);
+    }
+}
+
+.experience-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.experience-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.experience-date {
+    flex: 0 0 200px;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.experience-item:nth-child(odd) .experience-date {
+    text-align: right;
+    padding-right: 3rem;
+}
+
+.experience-item:nth-child(even) .experience-date {
+    text-align: left;
+    padding-left: 3rem;
+}
+
+.date-range {
+    font-weight: 600;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.status.current {
+    background: var(--gradient-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(240, 253, 244, 0.5);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    animation: currentGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes currentGlow {
+    from {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+    to {
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.8);
+    }
+}
+
+.experience-content {
+    flex: 1;
+    background: rgba(16, 185, 129, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0 3rem;
+}
+
+.experience-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 1rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.experience-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-large), var(--neon-glow);
+    border-color: var(--primary-color);
+}
+
+.experience-content:hover::before {
+    opacity: 0.15;
+}
+
+.experience-header {
+    margin-bottom: 1.5rem;
+}
+
+.job-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+}
+
+.company {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 10px rgba(240, 253, 244, 0.3);
+}
+
+.location {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.job-responsibilities {
+    margin-top: 1rem;
+}
+
+.job-responsibilities h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.job-responsibilities h5:first-child {
+    margin-top: 0;
+}
+
+.job-responsibilities ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.job-responsibilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.job-responsibilities li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+    transition: all 0.3s ease;
+}
+
+.job-responsibilities li:hover {
+    color: var(--text-primary);
+    transform: translateX(5px);
+    text-shadow: 0 0 10px rgba(240, 253, 244, 0.3);
+}
+
+.job-responsibilities li:hover::before {
+    color: var(--primary-color);
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
+    transform: scale(1.2);
 }
 
 /* Projects Section */
@@ -1384,6 +1615,40 @@ section {
         grid-template-columns: 1fr;
     }
 
+    /* Experience section mobile styles */
+    .experience-timeline::before {
+        left: 20px;
+    }
+
+    .experience-item {
+        flex-direction: column !important;
+        margin-bottom: 2rem;
+    }
+
+    .experience-item::before {
+        left: 20px;
+        transform: translateX(-50%);
+    }
+
+    .experience-date {
+        flex: none;
+        text-align: left;
+        padding: 0.5rem 0 1rem 3rem;
+        align-items: flex-start;
+    }
+
+    .experience-content {
+        margin: 0 0 0 3rem;
+        padding: 1.5rem;
+    }
+
+    .job-title {
+        font-size: 1.2rem;
+    }
+
+    .company {
+        font-size: 1.1rem;
+    }
 
     .footer-content {
         justify-content: center;
@@ -1443,6 +1708,48 @@ section {
 
     .contact-form {
         padding: 1.5rem;
+    }
+
+    /* Experience section smaller mobile styles */
+    .experience-timeline::before {
+        left: 15px;
+    }
+
+    .experience-item::before {
+        left: 15px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .experience-date {
+        padding: 0.5rem 0 1rem 2.5rem;
+        font-size: 0.9rem;
+    }
+
+    .experience-content {
+        margin: 0 0 0 2.5rem;
+        padding: 1rem;
+    }
+
+    .job-title {
+        font-size: 1.1rem;
+    }
+
+    .company {
+        font-size: 1rem;
+    }
+
+    .location {
+        font-size: 0.9rem;
+    }
+
+    .job-responsibilities h5 {
+        font-size: 1rem;
+    }
+
+    .job-responsibilities li {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
     }
 }
 

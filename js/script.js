@@ -19,6 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
             navToggle.classList.remove('active');
         });
     });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+    
+    // Close mobile menu on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
 
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
@@ -128,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Intersection Observer for animations
-    const observeElements = document.querySelectorAll('.skill-category, .project-card, .contact-item, .about-stats .stat');
+    const observeElements = document.querySelectorAll('.skill-category, .project-card, .about-stats .stat');
     
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -175,106 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeEffect, 1000);
     }
 
-    // Contact form handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
-            
-            // Simple validation
-            if (!data.name || !data.email || !data.message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(data.email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                showNotification('Thank you! Your message has been sent successfully.', 'success');
-                contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-    }
 
-    // Email validation function
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
 
-    // Notification system
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <span class="notification-message">${message}</span>
-                <button class="notification-close">&times;</button>
-            </div>
-        `;
-        
-        // Add notification styles
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            color: white;
-            font-weight: 500;
-            z-index: 10000;
-            max-width: 400px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            ${type === 'success' ? 'background: #059669;' : ''}
-            ${type === 'error' ? 'background: #dc2626;' : ''}
-            ${type === 'info' ? 'background: #2563eb;' : ''}
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Slide in animation
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Close button functionality
-        const closeBtn = notification.querySelector('.notification-close');
-        closeBtn.addEventListener('click', () => removeNotification(notification));
-        
-        // Auto remove after 5 seconds
-        setTimeout(() => removeNotification(notification), 5000);
-    }
-
-    function removeNotification(notification) {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }
 
     // Dynamic project loading (simulate loading from GitHub API)
     function loadGitHubProjects() {

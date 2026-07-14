@@ -1,17 +1,13 @@
 interface PixelIconProps {
-  kind: 'document' | 'app' | 'trash';
+  kind: 'document' | 'app' | 'mail';
 }
 
 export function PixelIcon({ kind }: PixelIconProps) {
-  if (kind === 'trash') {
+  if (kind === 'mail') {
     return (
       <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="9" y="11" width="14" height="16" fill="#dddddd" stroke="#000000" strokeWidth="1" />
-        <rect x="7" y="7" width="18" height="4" fill="#dddddd" stroke="#000000" strokeWidth="1" />
-        <rect x="12" y="4" width="8" height="3" fill="#dddddd" stroke="#000000" strokeWidth="1" />
-        <line x1="13" y1="14" x2="13" y2="24" stroke="#000000" strokeWidth="1" />
-        <line x1="16" y1="14" x2="16" y2="24" stroke="#000000" strokeWidth="1" />
-        <line x1="19" y1="14" x2="19" y2="24" stroke="#000000" strokeWidth="1" />
+        <rect x="4" y="8" width="24" height="18" fill="#ffffff" stroke="#000000" strokeWidth="1" />
+        <path d="M4 8 L16 19 L28 8" fill="none" stroke="#8877aa" strokeWidth="1.5" />
       </svg>
     );
   }

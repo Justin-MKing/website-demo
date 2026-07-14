@@ -8,7 +8,7 @@ interface TrashContactIconProps {
 export function TrashContactIcon({ onOpen }: TrashContactIconProps) {
   return (
     <button type="button" className={styles.trash} onClick={onOpen} aria-label="Open contact information">
-      <PixelIcon kind="trash" />
+      <PixelIcon kind="mail" />
       <span className={styles.label}>Contact</span>
     </button>
   );

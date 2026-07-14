@@ -8,7 +8,7 @@ Justin Michael King's portfolio site, built as a React + TypeScript single-page 
 - **TypeScript** (`~6.0`), project-referenced build via `tsc -b`
 - **Vite 8** as the dev server and bundler (`@vitejs/plugin-react`)
 - **Framer Motion** for animation
-- **lucide-react** for icon primitives, alongside a small set of hand-drawn pixel icons in `src/components/retro/icons.tsx`
+- **Icons come from three sources**: `lucide-react` (just the `Mail` icon in the Contact window), the pre-existing hand-rolled `GithubIcon`/`LinkedinIcon` SVGs in `src/components/icons.tsx`, and a small set of new hand-drawn pixel icons (`PixelIcon`) in `src/components/retro/icons.tsx` used by the Skills/Projects/Trash icon grids
 - **CSS Modules** (`*.module.css`) for component-scoped styling; retro theme variables (colors, checkerboard desktop background) live in `src/index.css`
 - **oxlint** for linting
 

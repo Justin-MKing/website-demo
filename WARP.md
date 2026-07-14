@@ -12,11 +12,11 @@ This is Justin Michael King's portfolio site: a React + TypeScript single-page a
 
 - `src/main.tsx` — React entry point, mounts `<App />` in `StrictMode` and imports the global theme styles (`src/index.css`, which defines the Mac Platinum color variables and the checkerboard desktop background).
 - `src/App.tsx` — renders a single component, `Desktop`.
-- `src/components/retro/Desktop.tsx` — the actual page. It owns two pieces of state: the z-order of the windows (`order`, an array of `WindowId`) and whether the Contact window is open. It renders the `MenuBar`, all five always-present windows, the decorative `KernelViewWidget`, and the `TrashContactIcon` (which conditionally mounts `ContactWindow`).
+- `src/components/retro/Desktop.tsx` — the actual page. It owns two pieces of state: the z-order of the windows (`order`, an array of `WindowId`) and whether the Contact window is open. Its `handleNavigate` function brings the target window to the front and scrolls it into view via `document.getElementById('window-<id>').scrollIntoView(...)` — this is passed down to `MenuBar` as the `onNavigate` prop. It renders the `MenuBar`, all five always-present windows, the decorative `KernelViewWidget`, and the `TrashContactIcon` (which conditionally mounts `ContactWindow`).
 
 ### Component structure (`src/components/retro/`)
 
-- **`MenuBar.tsx`** — fixed top bar with the Apple-menu glyph, decorative `File`/`Edit`/`View` labels, and navigation buttons for each window (`Home`, `About`, `Skills`, `Experience`, `Projects`). Clicking a link brings that window to the front and scrolls it into view via `document.getElementById('window-<id>').scrollIntoView(...)`.
+- **`MenuBar.tsx`** — fixed top bar with the Apple-menu glyph, decorative `File`/`Edit`/`View` labels, and navigation buttons for each window (`Home`, `About`, `Skills`, `Experience`, `Projects`). Each button calls the `onNavigate` prop it's given; `MenuBar` itself doesn't touch the DOM.
 - **`Window.tsx`** — shared window chrome: a title bar (close box, title text, zoom box) and a body. Dragging is implemented with pointer events wired to the `useDraggable` hook; position is applied via a CSS `transform: translate(x, y)`. Windows can optionally be closeable (`isCloseable` + `onClose`), used by `ContactWindow`.
 - **`types.ts`** — defines `WindowId`, the union of window identifiers (`'about-mac' | 'about-text' | 'skills' | 'process-list' | 'projects' | 'contact'`) used for z-order tracking and navigation.
 - **`AboutMacWindow.tsx`** — styled as the classic "About This Macintosh" dialog: hero heading/subtitle/tagline plus a set of `MemoryBar` components rendering animated stat bars from `content.about.stats`.
@@ -28,7 +28,13 @@ This is Justin Michael King's portfolio site: a React + TypeScript single-page a
 - **`KernelViewWidget.tsx`** — a decorative, non-interactive (`aria-hidden`) activity-monitor-style bar chart that randomizes its bars on an interval; disabled via `useReducedMotion` when the user prefers reduced motion.
 - **`TrashContactIcon.tsx`** — a desktop icon styled like the Trash, which opens the `ContactWindow` on click (contact is intentionally not in the menu bar's nav list).
 - **`ContactWindow.tsx`** — a small closeable window with GitHub/LinkedIn/email links, rendered only when the Trash icon has been clicked.
-- **`icons.tsx`** — hand-drawn `PixelIcon` primitives used by the icon-grid windows and the Trash icon (distinct from the `lucide-react` icons used for GitHub/LinkedIn/email in `ContactWindow`).
+- **`icons.tsx`** — hand-drawn `PixelIcon` primitives (`document` / `app` / `trash` variants) used by the icon-grid windows (`SkillsIconWindow`, `ProjectsIconWindow`) and `TrashContactIcon`.
+
+There are three separate icon sources in the codebase, not one — worth calling out since it's easy to conflate them:
+
+1. **`src/components/retro/icons.tsx`** — the new `PixelIcon` set described above, added for the retro reskin.
+2. **`src/components/icons.tsx`** — a pre-existing file (from before the retro reskin) exporting hand-rolled inline-SVG `GithubIcon`/`LinkedinIcon` components. `ContactWindow.tsx` imports these directly (`import { GithubIcon, LinkedinIcon } from '../icons'`) for its GitHub/LinkedIn links.
+3. **`lucide-react`** (npm package) — used directly for exactly one icon, `Mail`, in `ContactWindow.tsx` (`import { Mail } from 'lucide-react'`).
 
 Each component pairs with a `*.module.css` file (CSS Modules) for scoped styling.
 
@@ -76,7 +82,7 @@ The site is served under a custom domain: `public/CNAME` contains `justinkingdev
 
 - **react** / **react-dom** (v19)
 - **framer-motion** — animation
-- **lucide-react** — icon set used for the contact links
+- **lucide-react** — used for a single icon, `Mail`, in `ContactWindow` (GitHub/LinkedIn icons there come from the pre-existing hand-rolled `src/components/icons.tsx`, not this package)
 - **typescript**, **vite**, **@vitejs/plugin-react** — build tooling
 - **oxlint** — linting
 

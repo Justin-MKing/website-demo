@@ -1,6 +1,6 @@
 .desktop {
   position: relative;
-  min-height: 1300px;
+  min-height: 1450px;
   padding-top: calc(32px + env(safe-area-inset-top));
 }
 

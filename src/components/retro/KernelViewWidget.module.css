@@ -1,7 +1,7 @@
 .window {
   position: absolute;
   left: 460px;
-  top: 700px;
+  top: 1000px;
   width: 340px;
   background: var(--mac-grey);
   border: 1px solid var(--mac-border-dark);

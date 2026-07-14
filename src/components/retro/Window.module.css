@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  transform-origin: top left;
   background: var(--mac-grey);
   border: 1px solid var(--mac-border-dark);
   box-shadow:
@@ -41,10 +42,16 @@
   background: var(--mac-grey);
   border: 1px solid var(--mac-border-dark);
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.closeBox[role='button'] {
+.closeBox[role='button'],
+.zoomBox[role='button'] {
   cursor: pointer;
+}
+
+.zoomBox[aria-pressed='true'] {
+  background: var(--mac-accent);
 }
 
 .titleText {
@@ -62,6 +69,18 @@
   font-size: 13px;
   color: var(--mac-text);
   background: var(--mac-grey);
+}
+
+@media (pointer: coarse) {
+  .titleBar {
+    height: 30px;
+  }
+
+  .closeBox,
+  .zoomBox {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 @media (max-width: 768px) {

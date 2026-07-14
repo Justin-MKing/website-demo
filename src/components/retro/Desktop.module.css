@@ -1,12 +1,13 @@
 .desktop {
   position: relative;
   min-height: 1200px;
-  padding-top: 28px;
+  padding-top: calc(28px + env(safe-area-inset-top));
 }
 
 @media (max-width: 768px) {
   .desktop {
     min-height: auto;
-    padding: 44px 12px 80px;
+    padding: calc(44px + env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) calc(80px + env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
   }
 }

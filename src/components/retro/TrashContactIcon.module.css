@@ -1,11 +1,12 @@
 .trash {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: max(24px, calc(env(safe-area-inset-right) + 12px));
+  bottom: max(24px, calc(env(safe-area-inset-bottom) + 12px));
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  padding: 6px;
   background: none;
   border: none;
   cursor: pointer;
@@ -13,6 +14,7 @@
   font-size: 10px;
   color: var(--mac-white);
   z-index: 500;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .label {

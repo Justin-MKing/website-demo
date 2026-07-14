@@ -16,6 +16,17 @@
   border-bottom: 1px solid var(--mac-grey-dark);
 }
 
+.table tbody tr {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.table tbody tr:hover,
+.table tbody tr:focus-visible {
+  background: var(--mac-stripe-light);
+  outline: none;
+}
+
 .current {
   font-weight: 700;
   color: var(--mac-accent);
@@ -27,10 +38,19 @@
   padding-top: 8px;
   max-height: 220px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .detailsEntry {
   margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.highlighted {
+  background: var(--mac-stripe-light);
 }
 
 .detailsHeading {

@@ -18,8 +18,10 @@
   align-items: center;
   text-align: center;
   gap: 2px;
+  padding: 4px;
   text-decoration: none;
   color: var(--mac-text);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .iconLabel {

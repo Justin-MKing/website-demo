@@ -3,24 +3,28 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 24px;
+  height: calc(24px + env(safe-area-inset-top));
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 0 12px;
+  padding: env(safe-area-inset-top) max(12px, env(safe-area-inset-right)) 0 max(12px, env(safe-area-inset-left));
   background: var(--mac-grey);
   border-bottom: 1px solid var(--mac-border-dark);
   font-family: var(--font-title);
   font-size: 11px;
   z-index: 1000;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .appleMenu {
   font-size: 13px;
+  flex-shrink: 0;
 }
 
 .staticMenu {
   color: var(--mac-text);
+  flex-shrink: 0;
 }
 
 .nav {
@@ -28,6 +32,7 @@
   gap: 12px;
   margin-left: auto;
   margin-right: 12px;
+  flex-shrink: 0;
 }
 
 .navLink {
@@ -37,7 +42,8 @@
   font-size: inherit;
   color: var(--mac-accent);
   cursor: pointer;
-  padding: 0;
+  padding: 4px 2px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navLink:hover {
@@ -46,4 +52,11 @@
 
 .rightIcon {
   font-size: 13px;
+  flex-shrink: 0;
+}
+
+@media (pointer: coarse) {
+  .navLink {
+    padding: 8px 4px;
+  }
 }

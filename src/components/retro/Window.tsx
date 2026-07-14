@@ -86,7 +86,9 @@ export function Window({ id, title, initialPosition, width, zIndex, onFocus, isC
           aria-pressed={isZoomed}
           onClick={toggleZoom}
           onKeyDown={handleZoomKeyDown}
-        />
+        >
+          <span aria-hidden="true">{isZoomed ? '−' : '+'}</span>
+        </span>
       </div>
       <div className={styles.body}>{children}</div>
     </div>

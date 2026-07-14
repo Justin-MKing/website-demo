@@ -43,6 +43,9 @@
   border: 1px solid var(--mac-border-dark);
   flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closeBox[role='button'],
@@ -50,8 +53,17 @@
   cursor: pointer;
 }
 
+.zoomBox {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--mac-text);
+}
+
 .zoomBox[aria-pressed='true'] {
   background: var(--mac-accent);
+  color: var(--mac-white);
 }
 
 .titleText {
@@ -80,6 +92,10 @@
   .zoomBox {
     width: 22px;
     height: 22px;
+  }
+
+  .zoomBox {
+    font-size: 14px;
   }
 }
 

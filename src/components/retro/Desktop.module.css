@@ -1,0 +1,12 @@
+.desktop {
+  position: relative;
+  min-height: 1200px;
+  padding-top: 28px;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    min-height: auto;
+    padding: 44px 12px 80px;
+  }
+}

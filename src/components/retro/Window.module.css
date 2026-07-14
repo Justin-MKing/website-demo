@@ -1,0 +1,80 @@
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--mac-grey);
+  border: 1px solid var(--mac-border-dark);
+  box-shadow:
+    1px 1px 0 var(--mac-border-dark),
+    inset 1px 1px 0 var(--mac-border-light),
+    inset -1px -1px 0 var(--mac-grey-dark);
+  min-width: 220px;
+}
+
+.titleBar {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--mac-stripe-light) 0px,
+    var(--mac-stripe-light) 2px,
+    var(--mac-stripe-dark) 2px,
+    var(--mac-stripe-dark) 4px
+  );
+  border-bottom: 1px solid var(--mac-border-dark);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.titleBar:active {
+  cursor: grabbing;
+}
+
+.closeBox,
+.zoomBox {
+  width: 11px;
+  height: 11px;
+  background: var(--mac-grey);
+  border: 1px solid var(--mac-border-dark);
+  flex-shrink: 0;
+}
+
+.closeBox[role='button'] {
+  cursor: pointer;
+}
+
+.titleText {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 10px;
+  background: var(--mac-stripe-light);
+  padding: 0 6px;
+}
+
+.body {
+  padding: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--mac-text);
+  background: var(--mac-grey);
+}
+
+@media (max-width: 768px) {
+  .window {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: 100%;
+    margin: 12px auto;
+  }
+
+  .titleBar {
+    cursor: default;
+    touch-action: auto;
+  }
+}

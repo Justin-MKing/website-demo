@@ -1,0 +1,17 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  font-family: var(--font-title);
+  font-size: 12px;
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}

@@ -1,0 +1,47 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.table th {
+  text-align: left;
+  border-bottom: 1px solid var(--mac-border-dark);
+  padding: 2px 6px;
+}
+
+.table td {
+  padding: 2px 6px;
+  border-bottom: 1px solid var(--mac-grey-dark);
+}
+
+.current {
+  font-weight: 700;
+  color: var(--mac-accent);
+}
+
+.detailsSection {
+  margin-top: 10px;
+  border-top: 1px solid var(--mac-grey-dark);
+  padding-top: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.detailsEntry {
+  margin-bottom: 10px;
+}
+
+.detailsHeading {
+  font-family: var(--font-title);
+  font-size: 10px;
+  margin: 0 0 4px;
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11px;
+  line-height: 1.5;
+}

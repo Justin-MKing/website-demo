@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #0a0a0f;
-  --bg-elevated: #12121a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --text-primary: #f2f2f7;
-  --text-secondary: #9a9ab0;
-  --accent-cyan: #22d3ee;
-  --accent-violet: #a78bfa;
-  --gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
-  --radius: 16px;
-  --font-heading: 'Space Grotesk', sans-serif;
+  --mac-desktop-a: #8877aa;
+  --mac-desktop-b: #9988bb;
+  --mac-grey: #dddddd;
+  --mac-grey-dark: #bbbbbb;
+  --mac-border-dark: #444444;
+  --mac-border-light: #ffffff;
+  --mac-stripe-light: #eeeeee;
+  --mac-stripe-dark: #aaaaaa;
+  --mac-text: #000000;
+  --mac-accent: #0000aa;
+  --mac-white: #ffffff;
+  --font-title: 'Silkscreen', monospace;
   --font-body: 'Inter', sans-serif;
-  --max-width: 1120px;
+  --font-mono: 'Consolas', 'Monaco', monospace;
 }
 
 * {
@@ -24,49 +25,34 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  min-height: 100%;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  margin: 0;
+body {
+  font-family: var(--font-body);
+  color: var(--mac-text);
+  background-color: var(--mac-desktop-a);
+  background-image: repeating-conic-gradient(var(--mac-desktop-a) 0% 25%, var(--mac-desktop-b) 0% 50%);
+  background-size: 24px 24px;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
 }
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.gradientText {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

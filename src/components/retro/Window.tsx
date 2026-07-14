@@ -19,6 +19,9 @@ export function Window({ id, title, initialPosition, width, zIndex, onFocus, isC
 
   const handleTitleBarPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     onFocus();
+    if ((event.target as HTMLElement).closest('[data-window-control]')) {
+      return;
+    }
     onPointerDown(event);
   };
 
@@ -37,6 +40,7 @@ export function Window({ id, title, initialPosition, width, zIndex, onFocus, isC
       >
         <span
           className={styles.closeBox}
+          data-window-control
           role={isCloseable ? 'button' : undefined}
           tabIndex={isCloseable ? 0 : undefined}
           aria-label={isCloseable ? 'Close window' : undefined}
@@ -54,7 +58,7 @@ export function Window({ id, title, initialPosition, width, zIndex, onFocus, isC
           }
         />
         <span className={styles.titleText}>{title}</span>
-        <span className={styles.zoomBox} aria-hidden="true" />
+        <span className={styles.zoomBox} data-window-control aria-hidden="true" />
       </div>
       <div className={styles.body}>{children}</div>
     </div>

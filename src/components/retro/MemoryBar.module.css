@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.label {
+  flex: 0 0 130px;
+  font-size: 11px;
+}
+
+.track {
+  flex: 1;
+  height: 10px;
+  background: var(--mac-white);
+  border: 1px solid var(--mac-border-dark);
+}
+
+.fill {
+  height: 100%;
+  background: var(--mac-accent);
+}
+
+.value {
+  flex: 0 0 48px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}

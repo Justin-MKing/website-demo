@@ -1,0 +1,57 @@
+.window {
+  position: absolute;
+  left: 460px;
+  top: 700px;
+  width: 340px;
+  background: var(--mac-grey);
+  border: 1px solid var(--mac-border-dark);
+  box-shadow:
+    1px 1px 0 var(--mac-border-dark),
+    inset 1px 1px 0 var(--mac-border-light),
+    inset -1px -1px 0 var(--mac-grey-dark);
+}
+
+.titleBar {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--mac-stripe-light) 0px,
+    var(--mac-stripe-light) 2px,
+    var(--mac-stripe-dark) 2px,
+    var(--mac-stripe-dark) 4px
+  );
+  border-bottom: 1px solid var(--mac-border-dark);
+}
+
+.titleText {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 10px;
+  background: var(--mac-stripe-light);
+}
+
+.chart {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 8px;
+  background: var(--mac-white);
+}
+
+.bar {
+  flex: 1;
+  background: var(--mac-accent);
+  min-height: 2px;
+  transition: height 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .window {
+    display: none;
+  }
+}

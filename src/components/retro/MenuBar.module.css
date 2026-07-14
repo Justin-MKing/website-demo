@@ -1,0 +1,49 @@
+.menuBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 12px;
+  background: var(--mac-grey);
+  border-bottom: 1px solid var(--mac-border-dark);
+  font-family: var(--font-title);
+  font-size: 11px;
+  z-index: 1000;
+}
+
+.appleMenu {
+  font-size: 13px;
+}
+
+.staticMenu {
+  color: var(--mac-text);
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--mac-accent);
+  cursor: pointer;
+  padding: 0;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.rightIcon {
+  font-size: 13px;
+}

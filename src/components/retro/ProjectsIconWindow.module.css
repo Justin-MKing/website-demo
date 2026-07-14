@@ -1,0 +1,68 @@
+.statusBar {
+  padding: 3px 10px;
+  font-size: 10px;
+  background: var(--mac-stripe-light);
+  border-bottom: 1px solid var(--mac-grey-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.iconCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--mac-text);
+}
+
+.iconLabel {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.detailsSection {
+  margin-top: 10px;
+  border-top: 1px solid var(--mac-grey-dark);
+  padding-top: 8px;
+}
+
+.detailsEntry {
+  margin-bottom: 10px;
+}
+
+.detailsHeading {
+  font-family: var(--font-title);
+  font-size: 10px;
+  margin: 0 0 4px;
+}
+
+.detailsDescription {
+  margin: 0 0 2px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.detailsTech {
+  margin: 0;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--mac-border-dark);
+}
+
+.moreLink {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.moreLink a {
+  font-size: 11px;
+  color: var(--mac-accent);
+  text-decoration: underline;
+}

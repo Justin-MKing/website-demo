@@ -19,6 +19,7 @@
 .table tbody tr {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .table tbody tr:hover,
@@ -30,6 +31,12 @@
 .current {
   font-weight: 700;
   color: var(--mac-accent);
+}
+
+.rowHighlighted,
+.rowHighlighted:hover {
+  background: var(--mac-accent);
+  color: var(--mac-white);
 }
 
 .detailsSection {

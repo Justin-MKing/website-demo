@@ -58,7 +58,9 @@ export function ProcessListWindow({ zIndex, onFocus }: ProcessListWindowProps) {
             return (
               <tr
                 key={key}
-                className={entry.current ? styles.current : undefined}
+                className={[entry.current ? styles.current : '', highlightedKey === key ? styles.rowHighlighted : '']
+                  .filter(Boolean)
+                  .join(' ')}
                 role="button"
                 tabIndex={0}
                 aria-label={`Jump to details for ${entry.role} at ${entry.company}`}

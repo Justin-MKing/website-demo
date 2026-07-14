@@ -7,7 +7,7 @@
 .name {
   margin: 0;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .links {
@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--mac-accent);
   text-decoration: underline;
 }

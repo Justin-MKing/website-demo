@@ -19,7 +19,7 @@ interface WindowProps {
 
 export function Window({ id, title, initialPosition, width, zIndex, onFocus, isCloseable, onClose, children }: WindowProps) {
   const { position, onPointerDown, onPointerMove, onPointerUp } = useDraggable(initialPosition);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(true);
 
   const handleTitleBarPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     onFocus();

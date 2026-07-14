@@ -4,7 +4,7 @@
 
 .statusBar {
   padding: 3px 10px;
-  font-size: 10px;
+  font-size: 11px;
   background: var(--mac-stripe-light);
   border-bottom: 1px solid var(--mac-grey-dark);
 }
@@ -17,7 +17,7 @@
 
 .categoryTitle {
   font-family: var(--font-title);
-  font-size: 11px;
+  font-size: 12px;
   margin: 0 0 6px;
 }
 
@@ -36,6 +36,6 @@
 }
 
 .iconLabel {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.2;
 }

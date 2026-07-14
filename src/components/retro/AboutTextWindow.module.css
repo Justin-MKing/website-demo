@@ -6,12 +6,12 @@
 
 .heading {
   font-family: var(--font-title);
-  font-size: 12px;
+  font-size: 13px;
   margin: 0;
 }
 
 .description {
   margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
 }

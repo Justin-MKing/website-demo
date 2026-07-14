@@ -2,7 +2,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .table th {
@@ -55,13 +55,13 @@
 
 .detailsHeading {
   font-family: var(--font-title);
-  font-size: 10px;
+  font-size: 11px;
   margin: 0 0 4px;
 }
 
 .bullets {
   margin: 0;
   padding-left: 16px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }

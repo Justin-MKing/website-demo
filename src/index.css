@@ -32,12 +32,22 @@ body {
   min-height: 100%;
 }
 
+@keyframes wallpaper-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 24px;
+  }
+}
+
 body {
   font-family: var(--font-body);
   color: var(--mac-text);
   background-color: var(--mac-desktop-a);
   background-image: repeating-conic-gradient(var(--mac-desktop-a) 0% 25%, var(--mac-desktop-b) 0% 50%);
   background-size: 24px 24px;
+  animation: wallpaper-drift 10s linear infinite;
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-text-size-adjust: 100%;

@@ -1,178 +1,57 @@
-# J KING - ML/AI Data Operations Portfolio Website
+# J KING — ML/AI Data Operations Portfolio
 
-A modern, responsive portfolio website showcasing ML/AI expertise and projects, featuring animated backgrounds, smooth interactions, and mobile-first design.
+Justin Michael King's portfolio site, built as a React + TypeScript single-page app and skinned as a retro Mac OS "Platinum" desktop: a checkerboard desktop background, a persistent menu bar, and draggable windows that hold the actual portfolio content.
 
-## 🚀 Live Demo
+## Tech Stack
 
-Open `index.html` in your browser to view the portfolio website.
+- **React 19** (`react`, `react-dom`) with `StrictMode`
+- **TypeScript** (`~6.0`), project-referenced build via `tsc -b`
+- **Vite 8** as the dev server and bundler (`@vitejs/plugin-react`)
+- **Framer Motion** for animation
+- **lucide-react** for icon primitives, alongside a small set of hand-drawn pixel icons in `src/components/retro/icons.tsx`
+- **CSS Modules** (`*.module.css`) for component-scoped styling; retro theme variables (colors, checkerboard desktop background) live in `src/index.css`
+- **oxlint** for linting
 
-## ✨ Features
+There is no separate CSS or JS framework beyond this — no Tailwind, no state management library. The app's entire content model is a single typed object exported from `src/data/content.ts`.
 
-- **Responsive Design**: Fully responsive across all device sizes
-- **Animated Background**: Beautiful floating elements with parallax effects
-- **Interactive Navigation**: Smooth scrolling with active section highlighting
-- **Typing Animation**: Dynamic typing effect in hero section
-- **Skill Bars**: Animated progress bars for technical skills
-- **Project Showcase**: Highlighted GitHub projects with technology tags
-- **Contact Form**: Functional contact form with validation
-- **Performance Optimized**: Lazy loading, preloading, and efficient animations
-- **Accessibility**: WCAG compliant with keyboard navigation support
-- **Modern UI/UX**: Clean design with hover effects and micro-interactions
+## Local Development
 
-## 🛠️ Technologies Used
-
-- **HTML5**: Semantic markup and structure
-- **CSS3**: Modern styling with CSS Grid, Flexbox, and animations
-- **JavaScript (ES6+)**: Interactive functionality and dynamic content
-- **Font Awesome**: Icon library for social links and UI elements
-- **Google Fonts**: Poppins font family for typography
-
-## 📁 Project Structure
-
-```
-Portfolio-Website/
-├── index.html          # Main HTML file
-├── css/
-│   └── style.css       # Stylesheet with responsive design
-├── js/
-│   └── script.js       # JavaScript functionality
-├── assets/             # Images and other assets (empty)
-└── README.md          # This file
+```bash
+npm install       # install dependencies
+npm run dev        # start the Vite dev server with HMR
+npm run build       # type-check (tsc -b) and produce a production bundle in dist/
+npm run preview     # serve the built dist/ bundle locally
+npm run lint        # run oxlint
 ```
 
-## 🎨 Color Palette
+Building the project is required before it can be deployed — this is a compiled Vite app, not a set of static files you can open directly in a browser.
 
-- **Primary**: #2563eb (Blue)
-- **Secondary**: #1d4ed8 (Dark Blue)
-- **Accent**: #60a5fa (Light Blue)
-- **Background**: Linear gradient from #667eea to #764ba2
+## The Retro Desktop UI
 
-## 📱 Responsive Breakpoints
+The whole site is one component tree rooted at `src/components/retro/Desktop.tsx`, which renders:
 
-- **Desktop**: 1200px and above
-- **Tablet**: 768px - 1199px
-- **Mobile**: Below 768px
-- **Small Mobile**: Below 480px
+- **`MenuBar`** — a fixed top bar styled after the classic Mac OS menu bar, with an Apple-menu glyph, decorative `File`/`Edit`/`View` labels, and real navigation buttons (`Home`, `About`, `Skills`, `Experience`, `Projects`) that bring the matching window to the front and scroll it into view.
+- **Draggable windows** (`Window.tsx`, driven by the `useDraggable` hook in `src/hooks/useDraggable.ts`) — each window has a Mac-style title bar with a close box and zoom box, and can be dragged around the desktop via pointer events. The windows are:
+  - **`AboutMacWindow`** — styled as the classic "About This Macintosh" dialog, showing the hero heading/tagline plus animated `MemoryBar` stat bars (e.g. models deployed, pipelines built, data processed).
+  - **`AboutTextWindow`** — a Get-Info-style text window with the longer "about me" description.
+  - **`SkillsIconWindow`** — an icon-grid window listing skill categories and items.
+  - **`ProcessListWindow`** — a Mac "Process List"-style table repurposed to show work experience entries.
+  - **`ProjectsIconWindow`** — an icon-grid window listing featured projects with links.
+  - **`ContactWindow`** — a small closeable window with GitHub/LinkedIn/email links, opened from the Trash-style desktop icon (`TrashContactIcon`) rather than the menu bar.
+- **`KernelViewWidget`** — a decorative, always-on activity-monitor-style bar chart that animates randomly (disabled when the user prefers reduced motion) to sell the retro-OS feel.
 
-## 🚀 Features Breakdown
+All copy — hero text, stats, skills, experience entries, and projects — is defined once in `src/data/content.ts` (typed as `SiteContent`) and consumed by the window components above; updating the site's content means editing that file, not the components.
 
-### Hero Section
-- Animated typing effect
-- Professional introduction
-- Call-to-action buttons
-- Social media links
-- Animated profile placeholder
+## Deployment
 
-### About Section
-- Professional summary
-- Animated statistics counters
-- ML/AI expertise highlight
+The site deploys to GitHub Pages via GitHub Actions (`.github/workflows/static.yml`): on every push to `main`, the workflow installs dependencies with `npm ci`, runs `npm run build`, and uploads `dist/` as the Pages artifact. It's served under the custom domain configured in `public/CNAME` (`justinkingdev.com`).
 
-### Skills Section
-- Three category breakdown:
-  - Machine Learning
-  - Data Operations
-  - Tools & Frameworks
-- Animated skill progress bars
-- Hover effects on skill cards
+## Contact
 
-### Projects Section
-- Featured project cards
-- Technology tags
-- GitHub integration ready
-- Hover animations
-- Direct links to repositories
-
-### Contact Section
-- Contact information cards
-- Functional contact form
-- Form validation
-- Success/error notifications
-
-## ⚡ Performance Features
-
-- **Lazy Loading**: Images load as they come into view
-- **Preloading**: Critical resources loaded in advance
-- **Throttled Scrolling**: Optimized scroll event handling
-- **Intersection Observer**: Efficient animation triggering
-- **Minimal Dependencies**: Only essential external resources
-
-## 🎯 Customization
-
-### Personal Information
-Update the following in `index.html`:
-- Name and title
-- Professional description
-- Skills and percentages
-- Project information
-- Contact details
-
-### Styling
-Modify `css/style.css` to:
-- Change color scheme (CSS variables in `:root`)
-- Adjust animations and transitions
-- Update responsive breakpoints
-- Customize typography
-
-### Functionality
-Enhance `js/script.js` to:
-- Add new interactive features
-- Integrate with APIs (GitHub, email services)
-- Add more animations
-- Implement additional sections
-
-## 🔧 Setup & Deployment
-
-### Local Development
-1. Clone or download the project
-2. Open `index.html` in your browser
-3. No build process required - pure HTML/CSS/JS
-
-### Deployment Options
-- **GitHub Pages**: Push to a GitHub repository and enable Pages
-- **Netlify**: Drag and drop the folder to Netlify
-- **Vercel**: Import the project from GitHub
-- **Traditional Hosting**: Upload files to your web server
-
-## 📧 Contact Integration
-
-The contact form is currently set up with:
-- Client-side validation
-- Success/error notifications
-- Form data collection
-
-To make it fully functional, integrate with:
-- **EmailJS**: For client-side email sending
-- **Formspree**: Simple form handling service
-- **Netlify Forms**: Built-in form handling
-- **Custom Backend**: Your own API endpoint
-
-## 🎨 Future Enhancements
-
-- [ ] Dark mode toggle
-- [ ] Blog section
-- [ ] More project details modal
-- [ ] GitHub API integration for dynamic projects
-- [ ] Service Worker for PWA capabilities
-- [ ] Analytics integration
-- [ ] SEO optimization
-- [ ] Performance monitoring
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Feel free to fork this project and customize it for your own portfolio. If you make improvements, pull requests are welcome!
-
-## 📞 Support
-
-For questions or support, reach out:
 - **Email**: justinking90@gmail.com
 - **GitHub**: [@Justin-MKing](https://github.com/Justin-MKing)
 - **LinkedIn**: [@justin-mking](https://linkedin.com/in/justin-mking)
 
----
+## License
 
-Built with ❤️ by J KING - ML/AI Data Operations
+This project is open source and available under the [MIT License](LICENSE).
